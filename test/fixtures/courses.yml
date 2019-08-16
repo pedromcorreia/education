@@ -6,7 +6,6 @@ one:
   content: MyString
   duration: 1
   price: 1
-  school: one
 
 two:
   tittle: MyString
@@ -14,4 +13,3 @@ two:
   content: MyString
   duration: 1
   price: 1
-  school: two

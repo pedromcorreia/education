@@ -18,7 +18,6 @@ class CoursesTest < ApplicationSystemTestCase
     fill_in "Description", with: @course.description
     fill_in "Duration", with: @course.duration
     fill_in "Price", with: @course.price
-    fill_in "School", with: @course.school_id
     fill_in "Tittle", with: @course.tittle
     click_on "Create Course"
 
@@ -34,7 +33,6 @@ class CoursesTest < ApplicationSystemTestCase
     fill_in "Description", with: @course.description
     fill_in "Duration", with: @course.duration
     fill_in "Price", with: @course.price
-    fill_in "School", with: @course.school_id
     fill_in "Tittle", with: @course.tittle
     click_on "Update Course"
 
