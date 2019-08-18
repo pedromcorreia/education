@@ -8,6 +8,7 @@ end
 Rails.application.routes.draw do
   constraints SubdomainConstraint do
     resources :courses
+    resources :students
   end
 
   resources :schools
