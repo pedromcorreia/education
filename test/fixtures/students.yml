@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  course: one
+  school: one
 
 two:
   name: MyString
-  course: two
+  school: two

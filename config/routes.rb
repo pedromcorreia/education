@@ -6,11 +6,11 @@ class SubdomainConstraint
 end
 
 Rails.application.routes.draw do
+  resources :students
   get 'home/index'
   constraints SubdomainConstraint do
     resources :courses
-    resources :students
-  end
+    end
 
   resources :schools
   root :to => "home#index"

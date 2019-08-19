@@ -14,8 +14,8 @@ class StudentsTest < ApplicationSystemTestCase
     visit students_url
     click_on "New Student"
 
-    fill_in "Course", with: @student.course_id
     fill_in "Name", with: @student.name
+    fill_in "School", with: @student.school_id
     click_on "Create Student"
 
     assert_text "Student was successfully created"
@@ -26,8 +26,8 @@ class StudentsTest < ApplicationSystemTestCase
     visit students_url
     click_on "Edit", match: :first
 
-    fill_in "Course", with: @student.course_id
     fill_in "Name", with: @student.name
+    fill_in "School", with: @student.school_id
     click_on "Update Student"
 
     assert_text "Student was successfully updated"
