@@ -21,45 +21,7 @@
 </p>
 
 <td><%= link_to 'Students', school_students_path(@school) %></td>
-
-<h1>New Course</h1>
-<%= form_for([@school, @school.courses.build]) do |f| %>
-
-  <div class="field">
-    <%= f.label :tittle %>
-    <%= f.text_field :tittle %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-  </div>
-
-  <div class="field">
-    <%= f.label :duration %>
-    <%= f.number_field :duration %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :school_id %>
-    <%= f.text_field :school_id, disabled: :disabled %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+<td><%= link_to 'Courses', school_courses_path(@school) %></td>
 
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

@@ -25,10 +25,5 @@
   <%= @course.price %>
 </p>
 
-<p>
-  <strong>School:</strong>
-  <%= @course.school %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Edit', edit_school_course_path(@course.school, @course) %> |
+<%= link_to 'Back', school_courses_path(@course.school) %>
