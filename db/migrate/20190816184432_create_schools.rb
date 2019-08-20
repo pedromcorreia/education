@@ -8,5 +8,7 @@ class CreateSchools < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :schools, :email, unique: true
+    add_index :schools, :subdomain, unique: true
   end
 end

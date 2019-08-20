@@ -6,5 +6,6 @@ class CreateStudents < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :schools, :name, unique: true
   end
 end

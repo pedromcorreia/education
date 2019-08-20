@@ -8,6 +8,7 @@ class School < ApplicationRecord
 
   has_many :courses
   has_many :students
+  has_many :student_courses
 
   private
 

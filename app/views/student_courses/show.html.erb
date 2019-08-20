@@ -5,15 +5,5 @@
   <%= @student_course.active %>
 </p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @student_course.course %>
-</p>
-
-<p>
-  <strong>Student:</strong>
-  <%= @student_course.student %>
-</p>
-
-<%= link_to 'Edit', edit_student_course_path(@student_course) %> |
-<%= link_to 'Back', student_courses_path %>
+<%= link_to 'Edit', edit_school_student_course_path(@student_course.school, @student_course) %> |
+<%= link_to 'Back', school_student_courses_path(@student_course.school) %>

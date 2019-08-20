@@ -31,15 +31,20 @@ ActiveRecord::Schema.define(version: 2019_08_19_014954) do
     t.string "subdomain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_schools_on_email", unique: true
+    t.index ["name"], name: "index_schools_on_name", unique: true
+    t.index ["subdomain"], name: "index_schools_on_subdomain", unique: true
   end
 
   create_table "student_courses", force: :cascade do |t|
     t.boolean "active"
     t.integer "course_id"
     t.integer "student_id"
+    t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_student_courses_on_course_id"
+    t.index ["school_id"], name: "index_student_courses_on_school_id"
     t.index ["student_id"], name: "index_student_courses_on_student_id"
   end
 
