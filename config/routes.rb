@@ -6,14 +6,16 @@ class SubdomainConstraint
 end
 
 Rails.application.routes.draw do
-  resources :courses
-  resources :student_courses
-  resources :students
   get 'home/index'
-  constraints SubdomainConstraint do
-      end
 
-  resources :schools
+  resources :schools do
+    constraints SubdomainConstraint do
+      resources :courses
+      resources :student_courses
+      resources :students
+    end
+  end
+
   root :to => "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

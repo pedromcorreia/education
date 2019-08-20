@@ -1,4 +1,8 @@
 class Course < ApplicationRecord
-  has_many :studentcourses
+  validates :tittle, :presence => true
+  validates :description, :presence => true
+  validates :content, :presence => true
+  validates :duration, :presence => true
+  validates :price, :presence => true
   belongs_to :school
 end

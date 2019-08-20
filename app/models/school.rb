@@ -5,6 +5,7 @@ class School < ApplicationRecord
   validates :name, :presence => true
   validates :pitch, :presence => true
   validates :subdomain, :presence => true
+
   has_many :courses
   has_many :students
 
