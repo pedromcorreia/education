@@ -1,4 +1,5 @@
 class Course < ApplicationRecord
+  searchkick text_middle: [:tittle]
   validates :tittle, :presence => true
   validates :description, :presence => true
   validates :content, :presence => true

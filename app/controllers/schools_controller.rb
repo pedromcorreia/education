@@ -5,7 +5,9 @@ class SchoolsController < ApplicationController
   # GET /schools.json
   def index
     if params[:keywords].present?
-      @schools = School.search params[:keywords], fields: [:name], match: :text_middle
+      @schools = School.search(params[:keywords], execute: false, fields: [:name], match: :text_middle)
+      @courses = Course.search(params[:keywords], execute: false, fields: [:tittle], match: :text_middle)
+      Searchkick.multi_search([@schools, @courses])
     end
   end
 
