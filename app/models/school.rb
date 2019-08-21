@@ -1,4 +1,5 @@
 class School < ApplicationRecord
+  searchkick text_middle: [:name]
   after_create :create_tenant
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, :presence => true

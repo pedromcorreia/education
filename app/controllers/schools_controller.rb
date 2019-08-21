@@ -4,7 +4,9 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
+    if params[:keywords].present?
+      @schools = School.search params[:keywords], fields: [:name], match: :text_middle
+    end
   end
 
   # GET /schools/1
