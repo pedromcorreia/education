@@ -20,6 +20,11 @@
   <%= @school.subdomain %>
 </p>
 
+<p>
+  <strong>Total students active:</strong>
+  <%= @total_students_active %>
+</p>
+
 <td><%= link_to 'Students', school_students_path(@school) %></td>
 <td><%= link_to 'Courses', school_courses_path(@school) %></td>
 

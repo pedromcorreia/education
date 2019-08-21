@@ -5,9 +5,6 @@ class StudentCoursesController < ApplicationController
   # GET /student_courses.json
   def index
     school = School.find(params[:school_id])
-    Rails.logger.debug("My object: #{school.students.inspect}")
-    Rails.logger.debug("My object: #{school.student_courses.inspect}")
-
     @student_courses = school.student_courses
   end
 
