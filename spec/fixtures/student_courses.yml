@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: "student_1"
-  school: two
+  active: 
+  course: one
+  student: one
 
 two:
-  name: "student_2"
-  school: two
+  active: 
+  course: two
+  student: two
