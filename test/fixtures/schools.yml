@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  pitch: MyString
-  subdomain: MyString
+  name: "school_1"
+  email: "school_1@mail.com"
+  pitch: "school_1"
+  subdomain: "school_1"
 
 two:
-  name: MyString
-  email: MyString
-  pitch: MyString
-  subdomain: MyString
+  name: "school_2"
+  email: "school_2@mail.com"
+  pitch: "school_2"
+  subdomain: "school_2"

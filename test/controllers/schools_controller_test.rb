@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'faker'
 
 class SchoolsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -17,7 +18,7 @@ class SchoolsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create school" do
     assert_difference('School.count') do
-      post schools_url, params: { school: { email: @school.email, name: @school.name, pitch: @school.pitch, subdomain: @school.subdomain } }
+      post schools_url, params: { school: { email: Faker::Internet.email, name: Faker::Name.name, pitch: Faker::Name.name, subdomain: Faker::Internet.slug } }
     end
 
     assert_redirected_to school_url(School.last)
