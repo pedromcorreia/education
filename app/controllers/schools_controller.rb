@@ -15,6 +15,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     school = School.find(params[:id])
+    Apartment::Tenant.switch!(school.name)
     @total_students_active = StudentCourse.where(active: true).count
   end
 
