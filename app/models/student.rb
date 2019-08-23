@@ -2,6 +2,5 @@ class Student < ApplicationRecord
 
   validates :name, :presence => true
 
-  has_many :studentcourses
-  belongs_to :school
+  has_many :student_courses
 end

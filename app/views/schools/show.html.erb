@@ -25,8 +25,8 @@
   <%= @total_students_active %>
 </p>
 
-<td><%= link_to 'Students', school_students_path(@school) %></td>
-<td><%= link_to 'Courses', school_courses_path(@school) %></td>
+<td><%= link_to 'Students', students_path() %></td>
+<td><%= link_to 'Courses', courses_path() %></td>
 
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

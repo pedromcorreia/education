@@ -15,7 +15,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     school = School.find(params[:id])
-    @total_students_active = school.student_courses.where(active: true).count
+    #@total_students_active = Studentcourses.where(active: true).count
   end
 
   # GET /schools/new

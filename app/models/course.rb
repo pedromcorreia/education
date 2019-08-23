@@ -5,5 +5,5 @@ class Course < ApplicationRecord
   validates :content, :presence => true
   validates :duration, :presence => true
   validates :price, :presence => true
-  belongs_to :school
+  has_many :student_courses
 end

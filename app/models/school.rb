@@ -7,10 +7,6 @@ class School < ApplicationRecord
   validates :pitch, :presence => true
   validates :subdomain, :presence => true
 
-  has_many :courses
-  has_many :students
-  has_many :student_courses
-
   private
 
     def create_tenant
