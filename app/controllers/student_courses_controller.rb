@@ -15,10 +15,14 @@ class StudentCoursesController < ApplicationController
   # GET /student_courses/new
   def new
     @student_course = StudentCourse.new
+    @student = Student.all
+    @course = Course.all
   end
 
   # GET /student_courses/1/edit
   def edit
+    @student = Student.all
+    @course = Course.all
   end
 
   # POST /student_courses
@@ -70,5 +74,9 @@ class StudentCoursesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_course_params
     params.require(:student_course).permit(:active, :course_id, :student_id)
+  end
+
+  def convert_to_boolean(binary)
+    binary == "1"
   end
 end
