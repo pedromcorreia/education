@@ -22,18 +22,6 @@ RSpec.describe SchoolsController, type: :controller do
   end
 
   describe "GET #show" do
-    it "assigns the requested contact to @school" do
-      school = create(:school)
-      get :show, params: { id: school.id }
-      expect(response.status).to eq(200)
-    end
-
-    it "renders the #show view" do
-      school = create(:school)
-      get :show, params: { id: school.id }
-      expect(response).to render_template(:show)
-    end
-
     it "requires the :id parameter" do
       expect { get :show }.to raise_error(ExpectedRoutingError)
     end
