@@ -9,7 +9,7 @@ class School < ApplicationRecord
 
   private
 
-    def create_tenant
-      Apartment::Tenant.create(subdomain)
-    end
+  def create_tenant
+    Apartment::Tenant.create(subdomain)
+  end
 end

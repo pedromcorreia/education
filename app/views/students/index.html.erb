@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
- <h1>Students</h1>
+<h1>Students</h1>
 
- <table>
+<table>
   <thead>
     <tr>
       <th>Name</th>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
 
-   <tbody>
+  <tbody>
     <% @students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
@@ -23,6 +23,6 @@
   </tbody>
 </table>
 
- <br>
+<br>
 
- <%= link_to 'New Student', new_student_path %>
+<%= link_to 'New Student', new_student_path %>

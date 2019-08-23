@@ -16,7 +16,7 @@ RSpec.describe School, type: :model do
     end
   end
 
-   describe "Validations" do
+  describe "Validations" do
     it "is not valid without..." do
       subject.name = nil
       expect(subject).to_not be_valid
