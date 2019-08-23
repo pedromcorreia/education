@@ -3,7 +3,7 @@ FactoryBot.define do
     name { "school_1" }
     email { "school_1@mail.com" }
     pitch {"school_1" }
-    subdomain { Faker::Internet.slug }
+    subdomain { "test_#{Faker::Internet.slug}" }
   end
 end
 

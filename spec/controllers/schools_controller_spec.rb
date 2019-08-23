@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+if defined?(ActionController::UrlGenerationError)
+  ExpectedRoutingError = ActionController::UrlGenerationError
+else
+  ExpectedRoutingError = ActionController::RoutingError
+end
+
 RSpec.describe SchoolsController, type: :controller do
   describe "GET index" do
     subject { get :index }
@@ -27,6 +33,10 @@ RSpec.describe SchoolsController, type: :controller do
       get :show, params: { id: school.id }
       expect(response).to render_template(:show)
     end
+
+    it "requires the :id parameter" do
+      expect { get :show }.to raise_error(ExpectedRoutingError)
+    end
   end
 
   describe "GET #new" do
@@ -42,9 +52,13 @@ RSpec.describe SchoolsController, type: :controller do
       get :edit, params: { id: school.id }
       expect(response).to render_template(:edit)
     end
+
+    it "requires the :id parameter" do
+      expect { get :edit }.to raise_error(ExpectedRoutingError)
+    end
   end
 
-  describe '#create' do
+  describe 'POST #create' do
     subject { post :create, :params => { :school => attributes_for(:school) } }
 
     it "redirects to school_url(@school)" do
@@ -65,49 +79,46 @@ RSpec.describe SchoolsController, type: :controller do
     end
   end
 
-  describe 'PUT update' do
+  describe 'PUT #update' do
     before :each do
-      @school = create(:school, name: "app_2")
+      @school = create(:school, name: "updatename")
     end
 
-    context "valid attributes" do
-      it "located the requested @school" do
-        put :update, id: @school, contact: attributes_for(:school)
-        assigns(:school).should eq(@school)
-      end
-
-      it "changes @school's attributes" do
-        put :update, id: @contact,
-          contact: Factory.attributes_for(:contact, firstname: "Larry", lastname: "Smith")
-        @contact.reload
-        @contact.firstname.should eq("Larry")
-        @contact.lastname.should eq("Smith")
-      end
-
-      it "redirects to the updated contact" do
-        put :update, id: @contact, contact: Factory.attributes_for(:contact)
-        response.should redirect_to @contact
-      end
+    it "responds to PUT" do
+      put :update, params: { id: @school.id, school: attributes_for(:school) }
+      expect(subject).to redirect_to :action => :show,
+        :id => assigns(:school).id
     end
 
-    context "invalid attributes" do
-      it "locates the requested @contact" do
-        put :update, id: @contact, contact: Factory.attributes_for(:invalid_contact)
-        assigns(:contact).should eq(@contact)
-      end
+    it "requires the :id parameter" do
+      expect { put :update }.to raise_error(ExpectedRoutingError)
+    end
+  end
 
-      it "does not change @contact's attributes" do
-        put :update, id: @contact,
-          contact: Factory.attributes_for(:contact, firstname: "Larry", lastname: nil)
-        @contact.reload
-        @contact.firstname.should_not eq("Larry")
-        @contact.lastname.should eq("Smith")
-      end
+  describe 'DELETE #destroy' do
+    before :each do
+      @school = create(:school)
+    end
 
-      it "re-renders the edit method" do
-        put :update, id: @contact, contact: Factory.attributes_for(:invalid_contact)
-        response.should render_template :edit
-      end
+    it "deletes the school" do
+      expect{
+        delete :destroy, params: { id: @school.id }
+      }.to change(School,:count).by(-1)
+    end
+
+    it "requires the :id parameter" do
+      expect { delete :destroy }.to raise_error(ExpectedRoutingError)
+    end
+
+    it "redirects to schools#index" do
+      delete :destroy, params: { id: @school.id }
+      expect(response).to redirect_to schools_url
+    end
+  end
+
+  describe "#willerror" do
+    it "cannot be called" do
+      expect { get :willerror }.to raise_error(ExpectedRoutingError)
     end
   end
 end
