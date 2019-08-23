@@ -1,5 +1,11 @@
 require 'rails_helper'
 
+if defined?(ActionController::UrlGenerationError)
+  ExpectedRoutingError = ActionController::UrlGenerationError
+else
+  ExpectedRoutingError = ActionController::RoutingError
+end
+
 RSpec.describe StudentsController, type: :controller do
   describe "GET index" do
     subject { get :index }

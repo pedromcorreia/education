@@ -28,8 +28,8 @@ class StudentCoursesController < ApplicationController
 
     respond_to do |format|
       if @student_course.save
-        format.html { redirect_to [@student_course], notice: 'Student Course was successfully created.' }
-        format.json { render :show, status: :created, location: [@student_course] }
+        format.html { redirect_to @student_course, notice: 'Student Course was successfully created.' }
+        format.json { render :show, status: :created, location: @student_course }
       else
         format.html { render :new }
         format.json { render json: @student_course.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class StudentCoursesController < ApplicationController
   def update
     respond_to do |format|
       if @student_course.update_attributes(student_course_params)
-        format.html { redirect_to [@student_course], notice: 'Student Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@student_course] }
+        format.html { redirect_to @student_course, notice: 'Student Course was successfully updated.' }
+        format.json { render :show, status: :ok, location: @student_course }
       else
         format.html { render :edit }
         format.json { render json: @student_course.errors, status: :unprocessable_entity }

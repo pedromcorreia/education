@@ -6,31 +6,31 @@ else
   ExpectedRoutingError = ActionController::RoutingError
 end
 
-RSpec.describe SchoolsController, type: :controller do
+RSpec.describe StudentCoursesController, type: :controller do
   describe "GET index" do
     subject { get :index }
     it "renders the index template" do
       get :index
       expect(subject).to render_template(:index)
       expect(subject).to render_template("index")
-      expect(subject).to render_template("schools/index")
+      expect(subject).to render_template("student_courses/index")
     end
 
     it "does not render a different template" do
-      expect(subject).to_not render_template("schools/show")
+      expect(subject).to_not render_template("student_courses/show")
     end
   end
 
   describe "GET #show" do
-    it "assigns the requested contact to @school" do
-      school = create(:school)
-      get :show, params: { id: school.id }
+    it "assigns the requested contact to @student_course" do
+      student_course = create(:student_course)
+      get :show, params: { id: student_course.id }
       expect(response.status).to eq(200)
     end
 
     it "renders the #show view" do
-      school = create(:school)
-      get :show, params: { id: school.id }
+      student_course = create(:student_course)
+      get :show, params: { id: student_course.id }
       expect(response).to render_template(:show)
     end
 
@@ -48,8 +48,8 @@ RSpec.describe SchoolsController, type: :controller do
 
   describe "GET #edit" do
     it "responds to EDIT" do
-      school = create(:school)
-      get :edit, params: { id: school.id }
+      student_course = create(:student_course)
+      get :edit, params: { id: student_course.id }
       expect(response).to render_template(:edit)
     end
 
@@ -59,35 +59,35 @@ RSpec.describe SchoolsController, type: :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, :params => { :school => attributes_for(:school) } }
+    subject { post :create, :params => { :student_course => {:active => true, :student_id => create(:student), :course_id => create(:course) } } }
 
-    it "redirects to school_url(@school)" do
-      expect(subject).to redirect_to(school_url(assigns(:school)))
+    it "redirects to student_course_url(@student_course)" do
+      expect(subject).to redirect_to(student_course_url(assigns(:student_course)))
     end
 
     it "redirects_to :action => :show" do
       expect(subject).to redirect_to :action => :show,
-        :id => assigns(:school).id
+        :id => assigns(:student_course).id
     end
 
-    it "redirects_to(@school)" do
-      expect(subject).to redirect_to(assigns(:school))
+    it "redirects_to(@student_course)" do
+      expect(subject).to redirect_to(assigns(:student_course))
     end
 
-    it "redirects_to /schools/:id" do
-      expect(subject).to redirect_to("/schools/#{assigns(:school).id}")
+    it "redirects_to /student_courses/:id" do
+      expect(subject).to redirect_to("/student_courses/#{assigns(:student_course).id}")
     end
   end
 
   describe 'PUT #update' do
     before :each do
-      @school = create(:school, name: "updatename")
+      @student_course = create(:student_course, active: true)
     end
 
     it "responds to PUT" do
-      put :update, params: { id: @school.id, school: attributes_for(:school) }
+      put :update, params: { id: @student_course.id, student_course: attributes_for(:student_course) }
       expect(subject).to redirect_to :action => :show,
-        :id => assigns(:school).id
+        :id => assigns(:student_course).id
     end
 
     it "requires the :id parameter" do
@@ -97,22 +97,22 @@ RSpec.describe SchoolsController, type: :controller do
 
   describe 'DELETE #destroy' do
     before :each do
-      @school = create(:school)
+      @student_course = create(:student_course)
     end
 
-    it "deletes the school" do
+    it "deletes the student_course" do
       expect{
-        delete :destroy, params: { id: @school.id }
-      }.to change(School,:count).by(-1)
+        delete :destroy, params: { id: @student_course.id }
+      }.to change(StudentCourse, :count).by(-1)
     end
 
     it "requires the :id parameter" do
       expect { delete :destroy }.to raise_error(ExpectedRoutingError)
     end
 
-    it "redirects to schools#index" do
-      delete :destroy, params: { id: @school.id }
-      expect(response).to redirect_to schools_url
+    it "redirects to student_courses#index" do
+      delete :destroy, params: { id: @student_course.id }
+      expect(response).to redirect_to student_courses_url
     end
   end
 
